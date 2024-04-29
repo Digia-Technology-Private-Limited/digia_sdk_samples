@@ -1,4 +1,6 @@
+import 'package:digia_sdk_samples/growthx/growthx_home_page.dart';
 import 'package:digia_sdk_samples/growthx/growthx_login_page.dart';
+import 'package:digia_sdk_samples/growthx/growthx_otp_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,6 +10,8 @@ void main() {
       home: const HomePage(),
       routes: {
         '/growthxLoginPage': (context) => const GrowthxLoginPage(),
+        '/growthxOTPpage': (context) => const GrowthxOTPpage(),
+        '/growthxHomePage': (context) => const GrowthxHomePage(),
       },
     ),
   );

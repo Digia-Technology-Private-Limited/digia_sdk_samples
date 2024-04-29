@@ -1,14 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:pinput/pinput.dart';
 
-class GrowthxLoginPage extends StatefulWidget {
-  const GrowthxLoginPage({super.key});
+class GrowthxOTPpage extends StatefulWidget {
+  const GrowthxOTPpage({super.key});
 
   @override
-  State<GrowthxLoginPage> createState() => _GrowthxLoginPageState();
+  State<GrowthxOTPpage> createState() => _GrowthxOTPpageState();
 }
 
-class _GrowthxLoginPageState extends State<GrowthxLoginPage> {
+class _GrowthxOTPpageState extends State<GrowthxOTPpage> {
+  final defaultPinTheme = PinTheme(
+    width: 60,
+    height: 60,
+    margin: const EdgeInsets.only(right: 15),
+    textStyle: const TextStyle(
+      fontSize: 20,
+      color: Color.fromRGBO(255, 255, 255, 1),
+      fontWeight: FontWeight.w600,
+    ),
+    decoration: BoxDecoration(
+      border: Border.all(
+        color: const Color.fromRGBO(234, 239, 243, 1),
+      ),
+      borderRadius: BorderRadius.circular(20),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -68,38 +85,50 @@ class _GrowthxLoginPageState extends State<GrowthxLoginPage> {
                 ),
               ),
               const SizedBox(height: 30),
-              const Text(
-                'Enter mobile number',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 12,
-                  fontFamily: 'Gilroy',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Enter OTP',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 12,
+                      fontFamily: 'Gilroy',
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      'Edit number',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 12,
+                        fontFamily: 'Gilroy',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              const Text("Haven't received OTP? Click to resend",
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 5, 82, 214),
+                    fontSize: 14,
+                    fontFamily: 'Gilroy',
+                    fontWeight: FontWeight.w600,
+                  )),
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(top: 20, bottom: 20,),
+                child: Pinput(
+                  length: 4,
+                  defaultPinTheme: defaultPinTheme,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InternationalPhoneNumberInput(
-                  textStyle: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Gilroy',
-                  ),
-                  selectorConfig: const SelectorConfig(
-                    selectorType: PhoneInputSelectorType.DIALOG,
-                  ),
-                  selectorTextStyle: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Gilroy',
-                  ),
-                  initialValue: PhoneNumber(isoCode: 'IN'),
-                  spaceBetweenSelectorAndTextField: 0,
-                  onInputChanged: (PhoneNumber number) {
-                    // print(number.phoneNumber);
-                  },
-                ),
-              ),
-              const SizedBox(height: 30),
               Container(
                 margin: const EdgeInsets.only(left: 10, right: 10),
                 width: double.infinity,
@@ -112,10 +141,10 @@ class _GrowthxLoginPageState extends State<GrowthxLoginPage> {
                     padding: const EdgeInsets.all(20),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/growthxOTPpage');
+                    Navigator.pushNamed(context, '/growthxHomePage');
                   },
                   child: const Text(
-                    'Get OTP',
+                    'Login',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
