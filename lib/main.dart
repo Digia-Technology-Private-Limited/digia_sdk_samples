@@ -1,34 +1,77 @@
-import 'package:digia_sdk_samples/growthx/growthx_home_page.dart';
-import 'package:digia_sdk_samples/growthx/growthx_login_page.dart';
-import 'package:digia_sdk_samples/growthx/growthx_otp_page.dart';
+import 'package:digia_sdk_samples/native_pages/first_page.dart';
+import 'package:digia_sdk_samples/native_pages/second_page.dart';
+import 'package:digia_ui/digia_ui.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
   runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(),
-      routes: {
-        '/growthxLoginPage': (context) => const GrowthxLoginPage(),
-        '/growthxOTPpage': (context) => const GrowthxOTPpage(),
-        '/growthxHomePage': (context) => const GrowthxHomePage(),
-      },
-    ),
+    const HomePage(),
   );
 }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, '/growthxLoginPage');
-          },
-          child: const Text('Go to Growthx Login Page'),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/nativeFirstPage': (context) => const FirstPage(),
+        '/nativeSecondPage': (context) => const SecondPage(),
+        '/digiaFirstPage': (context) => DUIPage(pageUid: ''),
+        '/digiaSecondPage': (context) => DUIPage(pageUid: ''),
+      },
+      home: FutureBuilder(
+        future: DigiaUIClient.initializeFromNetwork(
+          accessKey: '654a07bd58a81f8c6e5c38c5',
+          environment: Environment.staging,
+          version: 1,
         ),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return const Scaffold(
+              body: SafeArea(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Initializing from Cloud...'),
+                      LinearProgressIndicator()
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+
+          if (snapshot.hasError) {
+            return const Scaffold(
+              body: SafeArea(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Could not fetch Config.',
+                        style: TextStyle(color: Colors.red, fontSize: 24),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+
+          // final initialRouteData =
+          //     DigiaUIClient.getConfigResolver().getfirstPageData();
+
+          return const FirstPage();
+        },
       ),
     );
   }
