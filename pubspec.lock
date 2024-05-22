@@ -311,7 +311,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "16af089ea3ebcd7e6557c2613f7cd0412c9a6f6f"
+      resolved-ref: d820d8d4fcd13230e5dfb54262122f0cbe683a38
       url: "git@github.com:Digia-Technology-Private-Limited/digia_ui.git"
     source: git
     version: "0.0.0"

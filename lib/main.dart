@@ -1,3 +1,5 @@
+import 'package:digia_sdk_samples/digia_pages/digia_first_page.dart';
+import 'package:digia_sdk_samples/digia_pages/digia_second_page.dart';
 import 'package:digia_sdk_samples/native_pages/first_page.dart';
 import 'package:digia_sdk_samples/native_pages/second_page.dart';
 import 'package:digia_ui/digia_ui.dart';
@@ -19,12 +21,12 @@ class HomePage extends StatelessWidget {
       routes: {
         '/nativeFirstPage': (context) => const FirstPage(),
         '/nativeSecondPage': (context) => const SecondPage(),
-        '/digiaFirstPage': (context) => DUIPage(pageUid: ''),
-        '/digiaSecondPage': (context) => DUIPage(pageUid: ''),
+        '/digiaFirstPage': (context) => const DigiaFirstPage(),
+        '/digiaSecondPage': (context) => const DigiaSecondPage(),
       },
       home: FutureBuilder(
         future: DigiaUIClient.initializeFromNetwork(
-          accessKey: '654a07bd58a81f8c6e5c38c5',
+          accessKey: '664cc4f05695adc5c7edda4d',
           environment: Environment.staging,
           version: 1,
         ),

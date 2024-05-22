@@ -6,16 +6,27 @@ class DigiaSecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     return DUIPage(
-      pageUid: 'pageUid',
+      pageUid: 'secondpage',
       externalFunctionHandler: (con, methodId, data) {
-        switch(methodId){
+        switch (methodId) {
           case 'goToNativeFirstPage':
-            Navigator.pushNamed(context, '/nativeFirstPage');
+            Navigator.pushNamed(
+              context,
+              '/nativeFirstPage',
+              arguments: {"navigatedFrom": data['navigatedFrom'] as String},
+            );
           case 'goToNativeSecondPage':
-            Navigator.pushNamed(context, '/nativeSecondPage');
+            Navigator.pushNamed(
+              context,
+              '/nativeSecondPage',
+              arguments: {"navigatedFrom": data['navigatedFrom'] as String},
+            );
         }
       },
+      pageArgs: {'navigatedFrom': args['navigatedFrom'] as String},
     );
   }
 }
