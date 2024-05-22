@@ -32,7 +32,7 @@ class FirstPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              args != null ? 'Navigate From ${args['navigatedFrom']}' : '',
+              args != null ? 'Navigated From ${args['navigatedFrom']}' : '',
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontWeight: FontWeight.w600,

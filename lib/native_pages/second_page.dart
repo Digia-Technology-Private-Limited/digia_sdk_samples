@@ -29,7 +29,7 @@ class SecondPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            args != null ? '${args['navigatedFrom']}' : '',
+            args != null ? 'Navigated From ${args['navigatedFrom']}' : '',
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontWeight: FontWeight.w600,
