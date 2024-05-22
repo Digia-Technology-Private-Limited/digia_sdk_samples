@@ -10,21 +10,23 @@ class DigiaFirstPage extends StatelessWidget {
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     return DUIPage(
       pageUid: 'homepage',
-      externalFunctionHandler: (con, methodId, data) {
-        switch (methodId) {
+      onMessageReceived: (message) {
+        switch (message.name) {
           case 'goToNativeFirstPage':
             Navigator.pushNamed(
-              context,
+              message.context,
               '/nativeFirstPage',
               arguments: {
-                "navigatedFrom": data['navigatedFrom'] as String,
+                "navigatedFrom": message.body?['navigatedFrom'] as String,
               },
             );
           case 'goToNativeSecondPage':
             Navigator.pushNamed(
-              context,
+              message.context,
               '/nativeSecondPage',
-              arguments: {"navigatedFrom": data['navigatedFrom'] as String},
+              arguments: {
+                "navigatedFrom": message.body?['navigatedFrom'] as String
+              },
             );
         }
       },
