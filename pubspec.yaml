@@ -31,10 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
   pinput: ^4.0.0
-  digia_ui:
-    git:
-      url: git@github.com:Digia-Technology-Private-Limited/digia_ui.git
-      ref: main
+  digia_ui: ^0.0.3
+
 
 
   # The following adds the Cupertino Icons font to your application.
