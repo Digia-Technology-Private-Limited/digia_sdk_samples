@@ -1,5 +1,6 @@
 import 'package:digia_ui/digia_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class DigiaSipAndMandateFlow extends StatelessWidget {
   const DigiaSipAndMandateFlow({super.key});
@@ -20,7 +21,7 @@ class DigiaSipAndMandateFlow extends StatelessWidget {
             //     "navigatedFrom": message.body?['navigatedFrom'] as String,
             //   },
             // );
-            print(message.body);
+            Fluttertoast.showToast(msg: message.name);
           case 'goToNativeSecondPage':
             Navigator.pushNamed(
               message.context,
