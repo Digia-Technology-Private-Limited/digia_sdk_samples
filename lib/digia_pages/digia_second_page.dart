@@ -21,7 +21,9 @@ class DigiaSecondPage extends StatelessWidget {
             //       "navigatedFrom": message.body?['navigatedFrom'] as String
             //     },
             //   );
-            Fluttertoast.showToast(msg: message.name);
+            Fluttertoast.showToast(
+                timeInSecForIosWeb: 2,
+                msg: message.name + '      \n ' + message.body.toString());
           case 'goToNativeSecondPage':
             Navigator.pushNamed(
               context,

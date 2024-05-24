@@ -22,7 +22,8 @@ class DigiaSipAndMandateFlow extends StatelessWidget {
             //   },
             // );
             Fluttertoast.showToast(
-                msg: message.name + '  ' + message.body.toString());
+                timeInSecForIosWeb: 2,
+                msg: message.name + '   \n    ' + message.body.toString());
           case 'goToNativeSecondPage':
             Navigator.pushNamed(
               message.context,
