@@ -9,7 +9,7 @@ class DigiaSecondPage extends StatelessWidget {
     final args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     return DUIPage(
-      pageUid: 'secondpage',
+      pageUid: 'selectdate',
       onMessageReceived: (message) {
         switch (message.name) {
           case 'goToNativeFirstPage':

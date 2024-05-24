@@ -21,12 +21,12 @@ class HomePage extends StatelessWidget {
       routes: {
         '/nativeFirstPage': (context) => const FirstPage(),
         '/nativeSecondPage': (context) => const SecondPage(),
-        '/digiaFirstPage': (context) => const DigiaFirstPage(),
+        '/digiaSipAndMandateFlow': (context) => const DigiaSipAndMandateFlow(),
         '/digiaSecondPage': (context) => const DigiaSecondPage(),
       },
       home: FutureBuilder(
         future: DigiaUIClient.initializeFromNetwork(
-          accessKey: '664cc4f05695adc5c7edda4d',
+          accessKey: '664833da4cd307dedf6955a1',
           environment: Environment.staging,
           version: 1,
         ),
