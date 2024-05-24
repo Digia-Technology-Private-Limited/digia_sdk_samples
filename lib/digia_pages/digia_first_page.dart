@@ -21,7 +21,8 @@ class DigiaSipAndMandateFlow extends StatelessWidget {
             //     "navigatedFrom": message.body?['navigatedFrom'] as String,
             //   },
             // );
-            Fluttertoast.showToast(msg: message.name);
+            Fluttertoast.showToast(
+                msg: message.name + '  ' + message.body.toString());
           case 'goToNativeSecondPage':
             Navigator.pushNamed(
               message.context,
@@ -32,7 +33,7 @@ class DigiaSipAndMandateFlow extends StatelessWidget {
             );
         }
       },
-      pageArgs: {
+      pageArgs: const {
         'sipMandate': {
           "dezerv_id": "664f574e0ccfca5dfc022379",
           "bank": {
