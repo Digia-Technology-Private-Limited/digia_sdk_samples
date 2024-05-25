@@ -1,7 +1,6 @@
-import 'package:digia_sdk_samples/digia_pages/digia_first_page.dart';
-import 'package:digia_sdk_samples/digia_pages/digia_second_page.dart';
-import 'package:digia_sdk_samples/native_pages/first_page.dart';
-import 'package:digia_sdk_samples/native_pages/second_page.dart';
+import 'package:digia_sdk_samples/dezerv_flows/start_sip_mandate_flow.dart';
+import 'package:digia_sdk_samples/dezerv_flows/start_mandate_status_flow.dart';
+import 'package:digia_sdk_samples/initial_page.dart';
 import 'package:digia_ui/digia_ui.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +18,9 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/nativeFirstPage': (context) => const FirstPage(),
-        '/nativeSecondPage': (context) => const SecondPage(),
-        '/digiaSipAndMandateFlow': (context) => const DigiaSipAndMandateFlow(),
-        '/digiaSecondPage': (context) => const DigiaSecondPage(),
+        '/initialPage': (context) => const InitialPage(),
+        '/startSipAndMandateFlow': (context) => const StartSipAndMandateFlow(),
+        '/startMandateStatusFlow': (context) => const StartMandateStatusFlow(),
       },
       home: FutureBuilder(
         future: DigiaUIClient.initializeFromNetwork(
@@ -72,7 +70,7 @@ class HomePage extends StatelessWidget {
           // final initialRouteData =
           //     DigiaUIClient.getConfigResolver().getfirstPageData();
 
-          return const FirstPage();
+          return const InitialPage();
         },
       ),
     );
